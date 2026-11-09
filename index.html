@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой TMA</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background-color: var(--tg-theme-bg-color, #1e1e1e);
+      color: var(--tg-theme-text-color, #ffffff);
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .badge {
+      background: #007aff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="user-greeting">Привет!</h2>
+  <div class="badge">TMA успешно запущен</div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe?.user;
+    if (user) {
+      document.getElementById('user-greeting').innerText = `Привет, ${user.first_name}!`;
+    }
+  </script>
+</body>
+</html>
